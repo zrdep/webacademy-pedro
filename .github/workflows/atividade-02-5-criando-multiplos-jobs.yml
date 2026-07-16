@@ -1,0 +1,35 @@
+name: Atividade 02.5 - Criando múltiplos Jobs
+
+on:
+  push:
+
+jobs:
+  job-1:
+    name: Job 1 - Checkout e informações do ambiente
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Exibir data e hora
+        run: date
+
+      - name: Exibir versão do Git
+        run: git --version
+
+  job-2:
+    name: Job 2 - Validar arquivos do projeto
+    runs-on: ubuntu-latest
+    needs: job-1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Verificar README
+        run: cat README.md
+
+      - name: Verificar LICENSE
+        run: cat LICENSE
+
+      - name: Verificar .gitignore
+        run: cat .gitignore
