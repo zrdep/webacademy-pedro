@@ -1,0 +1,29 @@
+name: Atividade 02.4 - Validando o repositório
+
+on:
+  push:
+
+jobs:
+  validar-repositorio:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validar arquivos obrigatórios
+        run: |
+          required_files=("README.md" "LICENSE" ".gitignore")
+          missing=()
+
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              missing+=("$file")
+            fi
+          done
+
+          if [ ${#missing[@]} -ne 0 ]; then
+            echo "Arquivos obrigatórios ausentes: ${missing[*]}"
+            exit 1
+          fi
+
+          echo "Todos os arquivos obrigatórios existem."
