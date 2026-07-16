@@ -9,12 +9,13 @@ env:
 jobs:
   mostrar-variaveis:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
       - name: Exibir nome do curso
-        run: echo "${{ env.CURSO }}"
+        run: echo "Curso $CURSO"
 
       - name: Exibir usuário que executou o workflow
         run: echo "${{ github.actor }}"
