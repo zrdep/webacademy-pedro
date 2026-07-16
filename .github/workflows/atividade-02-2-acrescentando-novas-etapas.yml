@@ -1,0 +1,26 @@
+name: Atividade 02.2 - Acrescentando novas etapas ao workflow
+
+on:
+  push:
+
+jobs:
+  workflow-etapas:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Exibir data e hora
+        run: date
+
+      - name: Exibir sistema operacional
+        run: uname -a
+
+      - name: Exibir versão do Git
+        run: git --version
+
+      - name: Exibir conteúdo do README
+        run: cat README.md
+
+      - name: Listar arquivos do projeto
+        run: ls -la
