@@ -1,0 +1,23 @@
+name: Atividade 02.3 - Utilizando variáveis
+
+on:
+  push:
+
+jobs:
+  mostrar-variaveis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Exibir nome do curso
+        run: "Web Academy"
+
+      - name: Exibir usuário que executou o workflow
+        run: echo "${{ github.actor }}"
+
+      - name: Exibir nome do repositório
+        run: echo "${{ github.repository }}"
+
+      - name: Exibir branch utilizada
+        run: echo "${{ github.ref_name }}"
